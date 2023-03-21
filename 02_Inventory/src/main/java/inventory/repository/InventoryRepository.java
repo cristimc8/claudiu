@@ -125,7 +125,6 @@ public class InventoryRepository {
 
 	public void writeAll() {
 
-		//ClassLoader classLoader = InventoryRepository.class.getClassLoader();
 		File file = new File(filename);
 
 		BufferedWriter bw = null;

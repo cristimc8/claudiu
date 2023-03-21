@@ -231,11 +231,13 @@ public class MainScreenController implements Initializable,Controller {
         alert.setHeaderText("Confirm Exit");
         alert.setContentText("Are you sure you want to exit?");
         Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == ButtonType.OK) {
-            System.out.println("Ok selected. Program exited");
-            System.exit(0);
-        } else {
-            System.out.println("Cancel clicked.");
+        if (result.isPresent()) {
+            if(result.get() == ButtonType.OK) {
+                System.out.println("Ok selected. Program exited");
+                System.exit(0);
+            } else {
+                System.out.println("Cancel clicked.");
+            }
         }
     }
 
