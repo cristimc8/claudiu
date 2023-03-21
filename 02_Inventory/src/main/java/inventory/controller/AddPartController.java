@@ -160,7 +160,7 @@ public class AddPartController implements Initializable, Controller {
                 alert.setContentText(errorMessage);
                 alert.showAndWait();
             } else {
-               if(isOutsourced == true) {
+               if(isOutsourced) {
                     service.addOutsourcePart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), partDynamicValue);
                 } else {
                     service.addInhousePart(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), Integer.parseInt(partDynamicValue));
@@ -173,7 +173,7 @@ public class AddPartController implements Initializable, Controller {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error Adding Part!");
             alert.setHeaderText("Error!");
-            alert.setContentText("Form contains blank field.");
+            alert.setContentText("CACA");
             alert.showAndWait();
         }
     }

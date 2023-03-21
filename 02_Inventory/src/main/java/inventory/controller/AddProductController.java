@@ -205,7 +205,7 @@ public class AddProductController implements Initializable, Controller {
         errorMessage = "";
         
         try {
-            errorMessage = Product.isValidProduct(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), addParts, errorMessage);
+            errorMessage = Product.isValidProduct(name, Double.parseDouble(price), Integer.parseInt(inStock), Integer.parseInt(min), Integer.parseInt(max), addParts);
             if(errorMessage.length() > 0) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Error Adding Part!");
@@ -219,9 +219,9 @@ public class AddProductController implements Initializable, Controller {
         } catch (NumberFormatException e) {
             System.out.println("Form contains blank field.");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error Adding Product!");
+            alert.setTitle("Number field error");
             alert.setHeaderText("Error!");
-            alert.setContentText("Form contains blank field.");
+            alert.setContentText("The number fields cannot be blank or contain letters.");
             alert.showAndWait();
         }
 

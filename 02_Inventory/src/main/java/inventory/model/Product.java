@@ -112,10 +112,10 @@ public class Product {
      * @param inStock
      * @param price
      * @param parts
-     * @param errorMessage
-     * @return 
+     * @return
      */
-    public static String isValidProduct(String name, double price, int inStock, int min, int max, ObservableList<Part> parts, String errorMessage) {
+    public static String isValidProduct(String name, double price, int inStock, int min, int max, ObservableList<Part> parts) {
+        String errorMessage = "";
         double sumOfParts = 0.00;
         for (int i = 0; i < parts.size(); i++) {
             sumOfParts += parts.get(i).getPrice();

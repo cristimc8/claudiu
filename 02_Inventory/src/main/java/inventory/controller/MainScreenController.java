@@ -27,7 +27,7 @@ public class MainScreenController implements Initializable,Controller {
      // Declare fields
     private Stage stage;
     private Parent scene;
-    private static Part modifyPart;
+    private static Part modifiedPart;
     private static Product modifyProduct;
     private static int modifyPartIndex;
     private static int modifyProductIndex;
@@ -80,7 +80,9 @@ public class MainScreenController implements Initializable,Controller {
     @FXML
     private TextField productsSearchTxt;
 
-    public MainScreenController(){}
+    public MainScreenController(){
+        // Empty constructor
+    }
 
     public void setService(InventoryService service){
         this.service=service;
@@ -198,8 +200,8 @@ public class MainScreenController implements Initializable,Controller {
      */
     @FXML
     void handleModifyPart(ActionEvent event) throws IOException {
-        modifyPart = partsTableView.getSelectionModel().getSelectedItem();
-        modifyPartIndex = service.getAllParts().indexOf(modifyPart);
+        modifiedPart = partsTableView.getSelectionModel().getSelectedItem();
+        modifyPartIndex = service.getAllParts().indexOf(modifiedPart);
         
         displayScene(event, "/fxml/ModifyPart.fxml");
     }
