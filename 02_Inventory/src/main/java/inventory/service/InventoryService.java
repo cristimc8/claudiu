@@ -4,6 +4,8 @@ import inventory.model.*;
 import inventory.repository.InventoryRepository;
 import javafx.collections.ObservableList;
 
+import java.util.Objects;
+
 public class InventoryService {
 
     private InventoryRepository repo;
@@ -22,6 +24,10 @@ public class InventoryService {
     }
 
     public void addProduct(String name, double price, int inStock, int min, int  max, ObservableList<Part> addParts){
+        String errorMessage = Product.isValidProduct(name, price, inStock, min, max, addParts);
+        if (!Objects.equals(errorMessage, "")) {
+            throw new IllegalArgumentException(errorMessage);
+        }
         Product product = new Product(repo.getAutoProductId(), name, price, inStock, min, max, addParts);
         repo.addProduct(product);
     }
