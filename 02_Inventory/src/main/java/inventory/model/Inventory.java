@@ -4,6 +4,8 @@ package inventory.model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.Objects;
+
 public class Inventory {
     
     // Declare fields
@@ -42,16 +44,27 @@ public class Inventory {
      * @return 
      */
     public Product lookupProduct(String searchItem) {
-        boolean isFound = false;
-        for(Product p: products) {
-            if(p.getName().contains(searchItem) || (p.getProductId()+"").equals(searchItem)) return p;
-            isFound = true;
+        Product product = null; // 1
+        if (searchItem == null || searchItem.isEmpty()) { // 2
+            return null; // 3
         }
-        if(isFound == false) {
-            Product product = new Product(0, null, 0.0, 0, 0, 0, null);
-            return product;
+        for(Product p: products) { // 4
+            if(p.getName().contains(searchItem) || (p.getProductId()+"").equals(searchItem)) { // 5
+                product = p; // 6
+            } // 7
         }
-        return null;
+        if(product != null) { // 8
+            if (product.getPrice() > 0) { // 9
+                if (product.getProductId() != 0) { // 10
+                    return product; // 15
+                }
+            }
+        } else {
+            if (!searchItem.equals("(●'◡'●)")) { // 12
+                return new Product(0, null, 0.0, 0, 0, 0, null); // 14
+            }
+        }
+        return null; // 11
     }
     
     /**
