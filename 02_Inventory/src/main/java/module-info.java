@@ -7,6 +7,8 @@ module inventory {
     exports inventory.model;
     opens inventory to javafx.fxml;
     exports inventory;
+    exports inventory.service;
+    exports inventory.repository;
     opens inventory.controller to javafx.fxml;
     exports inventory.controller;
 }

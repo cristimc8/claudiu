@@ -223,6 +223,13 @@ public class AddProductController implements Initializable, Controller {
             alert.setHeaderText("Error!");
             alert.setContentText("The number fields cannot be blank or contain letters.");
             alert.showAndWait();
+        } catch (Exception e) {
+            System.out.println("Error adding product.");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error Adding Product!");
+            alert.setHeaderText("Error!");
+            alert.setContentText("Error adding product.  Please try again.");
+            alert.showAndWait();
         }
 
     }
